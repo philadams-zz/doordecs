@@ -4,31 +4,40 @@
 <head>
   <meta charset="utf-8">
   <title>door-decs</title>
+  <link href="./css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="./css/door-decs.css"/>
 </head>
 
 <body>
 
-  <h1>door-decs</h1>
+  <div class="container">
 
-  <div id="build-door-decs">
-    <form>
-      <p>Image, residents.csv, build-button</p>
-      <input type="file" name="image-file" id="image-file" />
-      <input type="file" name="residents-file" id="residents-file" />
-      <!--<button id="build-button">Build door-decs</button>-->
-      <a href="#" id="build-button">Build door-decs</a>
-    </form>
-    <div id="residents-data"></div>
-    <div id="drop-csv"></div>
+    <h1>door-decs</h1>
+
+    <div id="build-door-decs">
+      <form>
+        <p>Image, residents.csv, build-button</p>
+        <input type="file" name="image-file" id="image-file" />
+        <input type="file" name="residents-file" id="residents-file" />
+        <!--<button id="build-button">Build door-decs</button>-->
+        <a href="#" id="build-button">Build door-decs</a>
+      </form>
+      <div id="residents-data"></div>
+      <div id="drop-csv"></div>
+    </div>
+
+    <div id="show-door-decs">
+      <ul id="door-decs"></ul>
+    </div>
+
+    <footer>
+      <p>A project by <a href="http://philadams.net">Phil Adams</a> (<a href="http://github.com/philadams/door-decs">code on github</a>).</p>
+    </footer>
+
   </div>
 
-  <div id="show-door-decs">
-    <ul id="door-decs"></ul>
-  </div>
-  <!-- scripts -->
-  <script src="./js/door-decs.js"></script>
-  <script src="./js/d3.v3.min.js"></script>
 </body>
+<script src="./js/door-decs.js"></script>
+<script src="./js/d3.v3.min.js"></script>
 
 </html>

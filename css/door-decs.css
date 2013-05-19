@@ -1,7 +1,14 @@
-body, html {
-  color: darkgrey;
+footer {
+  clear: both;
 }
 
 div#show-door-decs {
   display: none;
+}
+
+ul#door-decs {
+  list-style-type: none;
+}
+ul#door-decs li {
+  float: left;
 }
