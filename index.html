@@ -11,21 +11,21 @@
 
   <h1>door-decs</h1>
 
-  <form>
-    <input type="file" name="residents-file" id="residents-file" />
-    <input type="file" name="image-file" id="image-file" />
-  </form>
-  <a id="build-button" href="#">build</a>
+  <div id="build-door-decs">
+    <form>
+      <p>Image, residents.csv, build-button</p>
+      <input type="file" name="image-file" id="image-file" />
+      <input type="file" name="residents-file" id="residents-file" />
+      <!--<button id="build-button">Build door-decs</button>-->
+      <a href="#" id="build-button">Build door-decs</a>
+    </form>
+    <div id="residents-data"></div>
+    <div id="drop-csv"></div>
+  </div>
 
-  <div id="residents-data"></div>
-
-  <canvas id="canvas"></canvas>
-
-  <div id="drop-csv"></div>
-
-  <ul id="door-decs">
-  </ul>
-
+  <div id="show-door-decs">
+    <ul id="door-decs"></ul>
+  </div>
   <!-- scripts -->
   <script src="./js/door-decs.js"></script>
   <script src="./js/d3.v3.min.js"></script>

@@ -1,20 +1,23 @@
 var residents = [];
+var canvas = document.createElement('canvas');
 
 var loadImage = function(event) {
     var file = event.target.files[0];
     var reader = new FileReader();
     var image = new Image();
-    var canvas = document.getElementById('canvas');
     var ctx = canvas.getContext('2d');
 
     // handle file onload
     reader.onload = function(fh) {
         return function(e) {
             var fileContents = e.target.result;
+            console.log('loading image data...');
             image.src = fileContents;
             canvas.setAttribute('width', image.width);
             canvas.setAttribute('height', image.height);
             ctx.drawImage(image, 0, 0);
+            console.log('...image drawn to canvas');
+            canvas.style.setProperty('display', 'block');
         };
     }(file);
     reader.readAsDataURL(file);
@@ -28,8 +31,8 @@ var loadResidentData = function(event) {
     reader.onload = function(fh) {
         return function(e) {
             var fileContents = e.target.result;
-            console.log(fileContents);
             residents = d3.csv.parse(fileContents);
+            console.log('data for ' + residents.length + ' residents loaded');
             console.log(residents);
         };
     }(file);
@@ -39,7 +42,6 @@ var loadResidentData = function(event) {
 
 var buildDoorDecs = function(event) {
     console.log('building...');
-    var canvas = document.getElementById('canvas');
     var bufferedImData = null;
     var doordecs = document.getElementById('door-decs');
     var ctx = canvas.getContext('2d');
@@ -82,7 +84,11 @@ var buildDoorDecs = function(event) {
 
     });
 
-    canvas.style.setProperty('display', 'none');
+    console.log('built!');
+    var buildDD = document.getElementById('build-door-decs');
+    var showDD = document.getElementById('show-door-decs');
+    buildDD.style.setProperty('display', 'none');
+    showDD.style.setProperty('display', 'block');
     return false;
 };
 
