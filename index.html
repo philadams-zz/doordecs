@@ -27,8 +27,49 @@
 
 </body>
 
+<script src="./js/d3.v3.min.js"></script>
 <script type="text/javascript">
 // TODO resig's templating -> angular too big???
+
+function readImageFile(file) {
+  var reader = new FileReader();
+  reader.onerror = function(e) {
+    alert('error code: ' + e.target.error.code);
+  };
+
+  // create closure to capture file information
+  reader.onload = (function(aFile) {
+    return function(evt) {
+      console.log(evt.target.result);
+      var display = document.getElementById('display');
+      var im = document.createElement('img');
+      im.src = evt.target.result;
+      display.appendChild(im);
+    };
+  }(file));
+
+  // read in the image file as a data url
+  reader.readAsDataURL(file);
+}
+
+function readTextFile(file) {
+  var reader = new FileReader();
+  reader.onerror = function(e) {
+    alert('error code: ' + e.target.error.code);
+  };
+
+  // create closure to capture file information
+  reader.onload = (function(aFile) {
+    return function(evt) {
+      var rows = d3.csv.parse(evt.target.result);
+      console.log(rows);
+    };
+  }(file));
+
+  // read in the image file as a data url
+  reader.readAsText(file);
+}
+
 
 function onDragEnter(e) {
   e.stopPropagation();
@@ -53,30 +94,16 @@ function onDrop(e) {
   dropbox.style.background = 'white';
 
   var files = e.dataTransfer.files;
-  var readFileSize = 0;
 
   // loop over list of dropped files
+  var imageType = /image.*/;
   for (var i = 0, file; file = files[i]; i++) {
-    readFileSize += file.fileSize;
 
-    var reader = new FileReader();
-    reader.onerror = function(e) {
-      alert('error code: ' + e.target.error.code);
-    };
-
-    // create closure to capture file information
-    reader.onload = (function(aFile) {
-      return function(evt) {
-        console.log(evt.target.result);
-        var display = document.getElementById('display');
-        var im = document.createElement('img');
-        im.src = evt.target.result;
-        display.appendChild(im);
-      };
-    }(file));
-
-    // read in the image file as a data url
-    reader.readAsDataURL(file);
+    if (file.type.match(imageType)) {
+      readImageFile(file);
+    } else {  // TODO error handle this!
+      readTextFile(file);
+    }
   }
 
   return false;
