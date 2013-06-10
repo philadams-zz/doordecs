@@ -2,9 +2,8 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <title>door-decs</title>
-  <link href="./css/bootstrap.min.css" rel="stylesheet">
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  <title>Door Decs (philadams.net)</title>
   <link rel="stylesheet" href="./css/door-decs.css"/>
 </head>
 
@@ -14,20 +13,10 @@
 
     <h1>door-decs</h1>
 
-    <div id="build-door-decs">
-      <form>
-        <p>Image, residents.csv, build-button</p>
-        <input type="file" name="image-file" id="image-file" />
-        <input type="file" name="residents-file" id="residents-file" />
-        <!--<button id="build-button">Build door-decs</button>-->
-        <a href="#" id="build-button">Build door-decs</a>
-      </form>
-      <div id="residents-data"></div>
-      <div id="drop-csv"></div>
-    </div>
+    <div id="display"></div>
 
-    <div id="show-door-decs">
-      <ul id="door-decs"></ul>
+    <div id="drop-it-like-its-hot">
+      <h2>Drop (image) file(s) here from your desktop</h2>
     </div>
 
     <footer>
@@ -37,7 +26,70 @@
   </div>
 
 </body>
-<script src="./js/door-decs.js"></script>
-<script src="./js/d3.v3.min.js"></script>
+
+<script type="text/javascript">
+// TODO resig's templating -> angular too big???
+
+function onDragEnter(e) {
+  e.stopPropagation();
+  e.preventDefault();
+}
+
+function onDragOver(e) {
+  e.stopPropagation();
+  e.preventDefault();
+  dropbox.style.background = 'red';
+}
+
+function onDragLeave(e) {
+  e.stopPropagation();
+  e.preventDefault();
+  dropbox.style.background = 'white';
+}
+
+function onDrop(e) {
+  e.stopPropagation();
+  e.preventDefault();
+  dropbox.style.background = 'white';
+
+  var files = e.dataTransfer.files;
+  var readFileSize = 0;
+
+  // loop over list of dropped files
+  for (var i = 0, file; file = files[i]; i++) {
+    readFileSize += file.fileSize;
+
+    var reader = new FileReader();
+    reader.onerror = function(e) {
+      alert('error code: ' + e.target.error.code);
+    };
+
+    // create closure to capture file information
+    reader.onload = (function(aFile) {
+      return function(evt) {
+        console.log(evt.target.result);
+        var display = document.getElementById('display');
+        var im = document.createElement('img');
+        im.src = evt.target.result;
+        display.appendChild(im);
+      };
+    }(file));
+
+    // read in the image file as a data url
+    reader.readAsDataURL(file);
+  }
+
+  return false;
+}
+
+// global vars
+var dropbox = document.getElementById('drop-it-like-its-hot');
+
+// drag and drop handlers...
+dropbox.addEventListener('dragenter', onDragEnter, false);
+dropbox.addEventListener('dragover', onDragOver, false);
+dropbox.addEventListener('dragleave', onDragLeave, false);
+dropbox.addEventListener('drop', onDrop, false);
+</script>
 
 </html>

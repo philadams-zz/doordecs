@@ -1,14 +1,15 @@
+#drop-it-like-its-hot, #display {
+  width: 300px;
+  height: 300px;
+  margin: 16px;
+  border: 6px dotted lightgray;
+  float: left;
+}
+#display img {
+  width: 300px;
+  height: 300px;
+}
+
 footer {
   clear: both;
-}
-
-div#show-door-decs {
-  display: none;
-}
-
-ul#door-decs {
-  list-style-type: none;
-}
-ul#door-decs li {
-  float: left;
 }
