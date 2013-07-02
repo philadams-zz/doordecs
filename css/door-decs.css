@@ -5,7 +5,7 @@
   }
 
   div#app {
-    padding-top: 120px;
+    padding-top: 80px;
   }
 
   /* =branding */
@@ -48,10 +48,31 @@
     text-indent: 12px;
   }
 
+  /* =display-door-decs */
+  div#display-door-decs {
+    margin-top: 24px;
+    width: 100%;
+    height: 160px;
+  }
+
+  /* =print-door-decs */
+  div#print-door-decs {
+    display: none;
+  }
+
   /* =footer */
   footer {}
 
 }
 
 @media print {
+  div#app {
+    display: none;
+  }
+  div#print-door-decs {
+    display: block;
+  }
+  div#print-door-decs ul li {
+    float: left;
+  }
 }

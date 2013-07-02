@@ -12,6 +12,7 @@
 <body>
 
   <div id="app" class="container">
+
     <div class="row">
 
       <!-- title and stuff -->
@@ -26,20 +27,31 @@
           </p>
         </div>
       </div>
+      <! -- end title and stuff -->
 
       <!-- main content -->
       <div class="span4">
         <div id="content-main">
           <p class="dropbox">Drag a list of your residents here</p>
           <p class="dropbox">And drop a pretty picture here</p>
-          <p><a class="btn" href="#">Concoct some door decs!</a></p>
+          <p><a class="btn" id="build-button" href="#">Concoct some door decs!</a></p>
         </div>
       </div>
+      <!-- end main content -->
 
+    </div> <!-- end row -->
+
+    <div class="row">
+      <div class="span4 offset4">
+        <div id="display-door-decs">
+        </div>
+      </div>
     </div>
-  </div>
 
-  <div id="display-door-decs" class="container"></div>
+  </div> <!-- end app / container -->
+
+  <! -- container for printing door decs -->
+  <div id="print-door-decs"></div>
 
 </body>
 <script src="./js/d3.v3.min.js"></script>
