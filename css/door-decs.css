@@ -1,15 +1,57 @@
-#drop-it-like-its-hot, #display {
-  width: 300px;
-  height: 300px;
-  margin: 16px;
-  border: 6px dotted lightgray;
-  float: left;
-}
-#display img {
-  width: 300px;
-  height: 300px;
+@media screen {
+
+  body, html {
+    background-color: #1dccaa;
+  }
+
+  div#app {
+    padding-top: 120px;
+  }
+
+  /* =branding */
+  div#branding {
+    text-align: center;
+    padding-top: 13px;
+  }
+  div#branding a {
+    color: #eee;
+  }
+  div#branding a:hover {
+    color: #233140;
+  }
+  div#branding #logo i {
+    font-size: 78px;
+    color: #eee;
+  }
+  div#branding h1 {
+    font-size: 36px;
+    margin-top: 3px;
+  }
+
+  div#content-main {
+    background-color: #edeff1;
+    padding: 20px;
+    border-radius: 6px;
+  }
+  div#content-main p:last-child {
+    margin: 0;
+  }
+  div#content-main p {
+    text-align: center;
+  }
+  div#content-main p.dropbox {
+    width: 100%;
+    background-color: white;
+    color: #bfc6cb;
+    line-height: 42px;
+    border-radius: 6px;
+    text-indent: 12px;
+  }
+
+  /* =footer */
+  footer {}
+
 }
 
-footer {
-  clear: both;
+@media print {
 }

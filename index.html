@@ -3,124 +3,45 @@
 
 <head>
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
-  <title>Door Decs (philadams.net)</title>
+  <title>Door Decs | philadams.net</title>
+  <link rel="stylesheet" href="./css/flatly.bootstrap.min.css"/>
+  <link rel="stylesheet" href="./css/font-awesome.min.css"/>
   <link rel="stylesheet" href="./css/door-decs.css"/>
 </head>
 
 <body>
 
-  <div class="container">
+  <div id="app" class="container">
+    <div class="row">
 
-    <h1>door-decs</h1>
+      <!-- title and stuff -->
+      <div class="span3 offset2">
+        <div id="branding">
+          <p id="logo"><i class="icon-beaker"></i></p>
+          <h1>door-decs</h1>
+          <p>
+            <a href="http://philadams.net">philadams.net</a> 
+            <a href="http://github.com/philadams"><i class="icon-github"></i></a>
+            <a href="http://twitter.com/philadams"><i class="icon-twitter"></i></a>
+          </p>
+        </div>
+      </div>
 
-    <div id="display"></div>
+      <!-- main content -->
+      <div class="span4">
+        <div id="content-main">
+          <p class="dropbox">Drag a list of your residents here</p>
+          <p class="dropbox">And drop a pretty picture here</p>
+          <p><a class="btn" href="#">Concoct some door decs!</a></p>
+        </div>
+      </div>
 
-    <div id="drop-it-like-its-hot">
-      <h2>Drop (image) file(s) here from your desktop</h2>
     </div>
-
-    <footer>
-      <p>A project by <a href="http://philadams.net">Phil Adams</a> (<a href="http://github.com/philadams/door-decs">code on github</a>).</p>
-    </footer>
-
   </div>
 
+  <div id="display-door-decs" class="container"></div>
+
 </body>
-
 <script src="./js/d3.v3.min.js"></script>
-<script type="text/javascript">
-// TODO based on view-source:http://studio.html5rocks.com/samples/dnd-fileapi/index.html
-// TODO loop over residents and complete a template div for each one
-//      resig's templating -> angular too big???
-// TODO (screen and) print css for the pdf export
-//      based on http://purecss.io/
-
-function readImageFile(file) {
-  var reader = new FileReader();
-  reader.onerror = function(e) {
-    alert('error code: ' + e.target.error.code);
-  };
-
-  // create closure to capture file information
-  reader.onload = (function(aFile) {
-    return function(evt) {
-      console.log(evt.target.result);
-      var display = document.getElementById('display');
-      var im = document.createElement('img');
-      im.src = evt.target.result;
-      display.appendChild(im);
-    };
-  }(file));
-
-  // read in the image file as a data url
-  reader.readAsDataURL(file);
-}
-
-function readTextFile(file) {
-  var reader = new FileReader();
-  reader.onerror = function(e) {
-    alert('error code: ' + e.target.error.code);
-  };
-
-  // create closure to capture file information
-  reader.onload = (function(aFile) {
-    return function(evt) {
-      var rows = d3.csv.parse(evt.target.result);
-      console.log(rows);
-    };
-  }(file));
-
-  // read in the image file as a data url
-  reader.readAsText(file);
-}
-
-
-function onDragEnter(e) {
-  e.stopPropagation();
-  e.preventDefault();
-}
-
-function onDragOver(e) {
-  e.stopPropagation();
-  e.preventDefault();
-  dropbox.style.background = 'red';
-}
-
-function onDragLeave(e) {
-  e.stopPropagation();
-  e.preventDefault();
-  dropbox.style.background = 'white';
-}
-
-function onDrop(e) {
-  e.stopPropagation();
-  e.preventDefault();
-  dropbox.style.background = 'white';
-
-  var files = e.dataTransfer.files;
-
-  // loop over list of dropped files
-  var imageType = /image.*/;
-  for (var i = 0, file; file = files[i]; i++) {
-
-    if (file.type.match(imageType)) {
-      readImageFile(file);
-    } else {  // TODO error handle this!
-      readTextFile(file);
-    }
-  }
-
-  return false;
-}
-
-// global vars
-var dropbox = document.getElementById('drop-it-like-its-hot');
-
-// drag and drop handlers...
-dropbox.addEventListener('dragenter', onDragEnter, false);
-dropbox.addEventListener('dragover', onDragOver, false);
-dropbox.addEventListener('dragleave', onDragLeave, false);
-dropbox.addEventListener('drop', onDrop, false);
-</script>
-
+<script src="./js/door-decs.js"></script>
 </html>
