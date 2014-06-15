@@ -1,7 +1,11 @@
 @media screen {
 
-  body, html {
+  body {
     background-color: #1dccaa;
+  }
+
+  body#drag-over {
+    background-color: gold;
   }
 
   div#app {
@@ -38,14 +42,6 @@
   }
   div#content-main p {
     text-align: center;
-  }
-  div#content-main p.dropbox {
-    width: 100%;
-    background-color: white;
-    color: #bfc6cb;
-    line-height: 42px;
-    border-radius: 6px;
-    text-indent: 12px;
   }
 
   /* =display-door-decs */
