@@ -3,6 +3,12 @@
 // TODO make the entire screen droppable
 // TODO just do the right thing with whatever files are dropped
 // TODO structure app/modules e.g. http://css-tricks.com/how-do-you-structure-javascript-the-module-pattern-edition/
+// TODO add examples from /fixtures to index.html
+
+
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 var Doordecs = {
 
@@ -126,12 +132,10 @@ var Doordecs = {
         residents = Doordecs.residents,
         name_region_h = 80,
         room_region_h = 40,
-        ul_display = document.createElement('ul'),
         ul_print = document.createElement('ul'),
         im, li;
     var display = document.getElementById('display-door-decs'),
         print = document.getElementById('print-door-decs');
-    display.appendChild(ul_display);
     print.appendChild(ul_print);
 
     residents.forEach(function(resident) {
@@ -176,13 +180,16 @@ var Doordecs = {
       ul_print.appendChild(li);
 
       // save display image
-      li = document.createElement('li');
       img = document.createElement('img');
       im = canvas.toDataURL('image/png');
       img.setAttribute('src', im);
-      li.style.webkitTransform = "rotate(-22deg)";
-      li.appendChild(img);
-      ul_display.appendChild(li);
+      rotate = getRandomInt(-30, 30);
+      rLeft = getRandomInt(-110, 110);
+      rTop = getRandomInt(-20, 100);
+      img.style.webkitTransform = "rotate("+rotate+"deg) scale(0.8)";
+      img.style.top = "" + rTop + "px";
+      img.style.left = "" + rLeft + "px";
+      display.appendChild(img);
 
     });
     Doordecs.message.textContent = 'Done! Head to print preview :)';
