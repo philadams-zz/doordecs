@@ -10,6 +10,7 @@
 
   div#app {
     padding-top: 80px;
+    height: 100vh;
   }
 
   /* =branding */
@@ -70,10 +71,15 @@
   div#app {
     display: none;
   }
+  @page {
+    margin: 1cm 0.5cm 0.5cm 0.5cm;
+  }
   div#print-door-decs {
     display: block;
   }
   div#print-door-decs ul li {
+    list-style-type: none;
     float: left;
+    margin: 10px;
   }
 }
