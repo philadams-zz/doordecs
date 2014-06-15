@@ -17,15 +17,18 @@ directions
 ----------
 
 Load `index.html`. Drag-and-drop a .csv describing some residents, and a pretty
-picture. Hit 'Build door decs'. Then print, setting the page orientation to
-landscape. Done.
+picture. Then print, setting the page orientation to landscape. Done.
 
-A sample image and `residents.csv` file are under `/fixtures`.
+A sample image and `residents.csv` file are under `/fixtures`; example outputs
+are in `/example`.
+
+![doordecs app](./example/doordecs-app.png)
+
+![doordecs created](./example/doordecs-completed.png)
+
+![doordecs created (print)](./example/doordecs-completed-print.png)
 
 future
 ------
 
-- TODO improve load-data, build-pics, and directions/help UX
-- TODO image resizing and limits
-- TODO clean up README (links, directions, etc.)
-- customization of appearance/settings?
+- TODO image cropping if the aspect ratio is way off?
