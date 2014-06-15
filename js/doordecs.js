@@ -148,7 +148,7 @@ var Doordecs = {
       ctx = canvas.getContext('2d');
 
       // background
-      ctx.drawImage(bgImg, 0, 0);
+      ctx.drawImage(bgImg, 0, 0, canvas.width, canvas.height);
       ctx.globalAlpha = 0.4;
       ctx.fillStyle = 'black';
       ctx.fillRect(0, 0, canvas.width, room_region_h);
@@ -184,9 +184,9 @@ var Doordecs = {
       im = canvas.toDataURL('image/png');
       img.setAttribute('src', im);
       rotate = getRandomInt(-30, 30);
-      rLeft = getRandomInt(-110, 110);
-      rTop = getRandomInt(-20, 100);
-      img.style.webkitTransform = "rotate("+rotate+"deg) scale(0.8)";
+      rLeft = getRandomInt(-80, 110);
+      rTop = getRandomInt(0, 150);
+      img.style.webkitTransform = "rotate("+rotate+"deg) scale(1)";
       img.style.top = "" + rTop + "px";
       img.style.left = "" + rLeft + "px";
       display.appendChild(img);
